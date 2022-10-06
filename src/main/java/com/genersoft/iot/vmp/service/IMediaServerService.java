@@ -1,11 +1,9 @@
 package com.genersoft.iot.vmp.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.genersoft.iot.vmp.gb28181.bean.Device;
-import com.genersoft.iot.vmp.media.zlm.ZLMServerConfig;
+import com.genersoft.iot.vmp.media.zlm.ZlmServerConfig;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaServerItem;
 import com.genersoft.iot.vmp.service.bean.SSRCInfo;
-import com.genersoft.iot.vmp.vmanager.bean.WVPResult;
 
 import java.util.List;
 
@@ -29,7 +27,7 @@ public interface IMediaServerService {
      * @param zlmServerConfig
      * @return
      */
-    void zlmServerOnline(ZLMServerConfig zlmServerConfig);
+    void zlmServerOnline(ZlmServerConfig zlmServerConfig);
 
     /**
      * 节点离线

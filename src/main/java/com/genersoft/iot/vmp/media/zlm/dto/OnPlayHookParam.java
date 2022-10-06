@@ -5,6 +5,7 @@ package com.genersoft.iot.vmp.media.zlm.dto;
  * @author lin
  */
 public class OnPlayHookParam extends HookParam{
+
     private String id;
     private String app;
     private String stream;
@@ -13,7 +14,6 @@ public class OnPlayHookParam extends HookParam{
     private int port;
     private String schema;
     private String vhost;
-
 
     public String getId() {
         return id;

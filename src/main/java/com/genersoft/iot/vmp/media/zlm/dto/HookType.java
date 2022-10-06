@@ -1,12 +1,11 @@
 package com.genersoft.iot.vmp.media.zlm.dto;
 
 /**
- * hook类型
+ * hook类型--zlm回调的事件类型
  * @author lin
  */
 
 public enum HookType {
-
     on_flow_report,
     on_http_access,
     on_play,
@@ -19,5 +18,6 @@ public enum HookType {
     on_stream_none_reader,
     on_stream_not_found,
     on_server_started,
-    on_server_keepalive
+    on_server_keepalive  //sip与zlm之间的心跳事件
+
 }

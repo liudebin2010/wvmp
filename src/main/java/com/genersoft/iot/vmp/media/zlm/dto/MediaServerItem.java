@@ -1,14 +1,14 @@
 package com.genersoft.iot.vmp.media.zlm.dto;
 
-
 import com.genersoft.iot.vmp.gb28181.session.SsrcConfig;
-import com.genersoft.iot.vmp.media.zlm.ZLMServerConfig;
+import com.genersoft.iot.vmp.media.zlm.ZlmServerConfig;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
-
 import java.util.HashMap;
 
+/**
+ * 对应media_server表
+ */
 @Schema(description = "流媒体服务信息")
 public class MediaServerItem{
 
@@ -104,7 +104,7 @@ public class MediaServerItem{
     public MediaServerItem() {
     }
 
-    public MediaServerItem(ZLMServerConfig zlmServerConfig, String sipIp) {
+    public MediaServerItem(ZlmServerConfig zlmServerConfig, String sipIp) {
         id = zlmServerConfig.getGeneralMediaServerId();
         ip = zlmServerConfig.getIp();
         hookIp = ObjectUtils.isEmpty(zlmServerConfig.getHookIp())? sipIp: zlmServerConfig.getHookIp();
@@ -125,7 +125,6 @@ public class MediaServerItem{
         rtpPortRange = zlmServerConfig.getPortRange().replace("_",","); // 默认使用30000,30500作为级联时发送流的端口号
         sendRtpPortRange = "30000,30500"; // 默认使用30000,30500作为级联时发送流的端口号
         recordAssistPort = 0; // 默认关闭
-
     }
 
     public String getId() {

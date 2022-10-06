@@ -1,7 +1,6 @@
 package com.genersoft.iot.vmp.media.zlm.dto;
 
 import com.alibaba.fastjson.JSONObject;
-
 import java.time.Instant;
 
 /**
@@ -33,4 +32,5 @@ public interface IHookSubscribe {
      * @return 过期时间
      */
     Instant getExpires();
+
 }

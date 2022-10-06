@@ -25,12 +25,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author lin
  */
 @Component
-public class ZLMMediaListManager {
+public class ZlmMediaListManager {
 
     private Logger logger = LoggerFactory.getLogger("ZLMMediaListManager");
 
     @Autowired
-    private ZLMRESTfulUtils zlmresTfulUtils;
+    private ZlmRestfulUtils zlmresTfulUtils;
 
     @Autowired
     private IRedisCatchStorage redisCatchStorage;
@@ -60,7 +60,7 @@ public class ZLMMediaListManager {
     private UserSetting userSetting;
 
     @Autowired
-    private ZLMRTPServerFactory zlmrtpServerFactory;
+    private ZlmRtpServerFactory zlmrtpServerFactory;
 
     @Autowired
     private IMediaServerService mediaServerService;

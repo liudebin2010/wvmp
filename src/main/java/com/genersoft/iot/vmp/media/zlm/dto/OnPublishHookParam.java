@@ -14,7 +14,6 @@ public class OnPublishHookParam extends HookParam{
     private String schema;
     private String vhost;
 
-
     public String getId() {
         return id;
     }

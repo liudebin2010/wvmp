@@ -43,9 +43,9 @@ import javax.sip.SipException;
  */
 @RestController
 @RequestMapping("/index/hook")
-public class ZLMHttpHookListener {
+public class ZlmHttpHookListener {
 
-	private final static Logger logger = LoggerFactory.getLogger(ZLMHttpHookListener.class);
+	private final static Logger logger = LoggerFactory.getLogger(ZlmHttpHookListener.class);
 
 	@Autowired
 	private SIPCommander cmder;
@@ -81,7 +81,7 @@ public class ZLMHttpHookListener {
 	private EventPublisher eventPublisher;
 
 	 @Autowired
-	 private ZLMMediaListManager zlmMediaListManager;
+	 private ZlmMediaListManager zlmMediaListManager;
 
 	@Autowired
 	private ZlmHttpHookSubscribe subscribe;
@@ -96,7 +96,7 @@ public class ZLMHttpHookListener {
 	private VideoStreamSessionManager sessionManager;
 
 	@Autowired
-	private AssistRESTfulUtils assistRESTfulUtils;
+	private AssistRestfulUtils assistRESTfulUtils;
 
 	@Qualifier("taskExecutor")
 	@Autowired
@@ -697,7 +697,7 @@ public class ZLMHttpHookListener {
 			}
 		}
 
-		ZLMServerConfig zlmServerConfig = JSONObject.toJavaObject(jsonObject, ZLMServerConfig.class);
+		ZlmServerConfig zlmServerConfig = JSONObject.toJavaObject(jsonObject, ZlmServerConfig.class);
 		if (zlmServerConfig !=null ) {
 			mediaServerService.zlmServerOnline(zlmServerConfig);
 		}
@@ -761,4 +761,5 @@ public class ZLMHttpHookListener {
 		}
 		return map;
 	}
+
 }

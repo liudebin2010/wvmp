@@ -14,76 +14,59 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
 
-
+/**
+ * 媒体配置
+ */
 @Configuration("mediaConfig")
 public class MediaConfig{
 
     private final static Logger logger = LoggerFactory.getLogger(MediaConfig.class);
 
-    // 修改必须配置，不再支持自动获取
-    @Value("${media.id}")
-    private String id;
-
-    @Value("${media.ip}")
-    private String ip;
-
-    @Value("${media.hook-ip:${sip.ip}}")
-    private String hookIp;
-
     @Value("${sip.ip}")
     private String sipIp;
-
     @Value("${sip.domain}")
     private String sipDomain;
 
-    @Value("${media.sdp-ip:${media.ip}}")
-    private String sdpIp;
-
-    @Value("${media.stream-ip:${media.ip}}")
-    private String streamIp;
-
+    // 修改必须配置，不再支持自动获取
+    @Value("${media.id}")
+    private String id;
+    @Value("${media.ip}")
+    private String ip;
     @Value("${media.http-port}")
     private Integer httpPort;
-
     @Value("${media.http-ssl-port:0}")
     private Integer httpSSlPort = 0;
-
     @Value("${media.rtmp-port:0}")
     private Integer rtmpPort = 0;
-
     @Value("${media.rtmp-ssl-port:0}")
     private Integer rtmpSSlPort = 0;
-
     @Value("${media.rtp-proxy-port:0}")
     private Integer rtpProxyPort = 0;
-
     @Value("${media.rtsp-port:0}")
     private Integer rtspPort = 0;
-
     @Value("${media.rtsp-ssl-port:0}")
     private Integer rtspSSLPort = 0;
-
     @Value("${media.auto-config:true}")
     private boolean autoConfig = true;
-
     @Value("${media.secret}")
     private String secret;
-
     @Value("${media.stream-none-reader-delay-ms:15000}")
     private int streamNoneReaderDelayMS = 15000;
-
     @Value("${media.rtp.enable}")
     private boolean rtpEnable;
-
     @Value("${media.rtp.port-range}")
     private String rtpPortRange;
-
-
     @Value("${media.rtp.send-port-range}")
     private String sendRtpPortRange;
-
     @Value("${media.record-assist-port:0}")
     private Integer recordAssistPort = 0;
+
+    @Value("${media.hook-ip:${sip.ip}}")
+    private String hookIp;
+    @Value("${media.sdp-ip:${media.ip}}")
+    private String sdpIp;
+    @Value("${media.stream-ip:${media.ip}}")
+    private String streamIp;
 
     public String getId() {
         return id;
@@ -99,7 +82,6 @@ public class MediaConfig{
         }else {
             return hookIp;
         }
-
     }
 
     public String getSipIp() {
@@ -132,7 +114,6 @@ public class MediaConfig{
         }else {
             return rtpProxyPort;
         }
-
     }
 
     public int getRtspPort() {
@@ -238,5 +219,4 @@ public class MediaConfig{
         }
         return false;
     }
-
 }

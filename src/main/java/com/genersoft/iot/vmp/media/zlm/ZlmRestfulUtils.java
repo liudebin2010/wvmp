@@ -18,18 +18,25 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 调用ZLM流媒体服务器的工具类
+ */
 @Component
-public class ZLMRESTfulUtils {
+public class ZlmRestfulUtils {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZLMRESTfulUtils.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZlmRestfulUtils.class);
 
-
-
-
+    /**
+     * 请求回调
+     */
     public interface RequestCallback{
         void run(JSONObject response);
     }
 
+    /**
+     * 获取okHttpClient
+     * @return
+     */
     private OkHttpClient getClient(){
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         //todo 暂时写死超时时间 均为5s
@@ -47,6 +54,14 @@ public class ZLMRESTfulUtils {
     }
 
 
+    /**
+     * 向zlm流媒体服务器发送POST请求
+     * @param mediaServerItem
+     * @param api
+     * @param param
+     * @param callback
+     * @return
+     */
     public JSONObject sendPost(MediaServerItem mediaServerItem, String api, Map<String, Object> param, RequestCallback callback) {
         OkHttpClient client = getClient();
 
@@ -84,11 +99,11 @@ public class ZLMRESTfulUtils {
                             String responseStr = responseBody.string();
                             responseJSON = JSON.parseObject(responseStr);
                         }
-                    }else {
+                    } else {
                         response.close();
                         Objects.requireNonNull(response.body()).close();
                     }
-                }catch (IOException e) {
+                } catch (IOException e) {
                     logger.error(String.format("[ %s ]请求失败: %s", url, e.getMessage()));
 
                     if(e instanceof SocketTimeoutException){
@@ -100,10 +115,10 @@ public class ZLMRESTfulUtils {
                         logger.error(String.format("连接ZLM失败: %s, %s", url, e.getMessage()));
                     }
 
-                }catch (Exception e){
+                } catch (Exception e){
                     logger.error(String.format("访问ZLM失败: %s, %s", url, e.getMessage()));
                 }
-            }else {
+            } else {
                 client.newCall(request).enqueue(new Callback(){
 
                     @Override
@@ -138,11 +153,17 @@ public class ZLMRESTfulUtils {
                 });
             }
 
-
-
         return responseJSON;
     }
 
+    /**
+     *
+     * @param mediaServerItem
+     * @param api
+     * @param params
+     * @param targetPath
+     * @param fileName
+     */
     public void sendGetForImg(MediaServerItem mediaServerItem, String api, Map<String, Object> params, String targetPath, String fileName) {
         String url = String.format("http://%s:%s/index/api/%s", mediaServerItem.getIp(), mediaServerItem.getHttpPort(), api);
         logger.debug(url);
@@ -198,6 +219,15 @@ public class ZLMRESTfulUtils {
         }
     }
 
+    /**
+     *
+     * @param mediaServerItem
+     * @param app
+     * @param stream
+     * @param schema
+     * @param callback
+     * @return
+     */
     public JSONObject getMediaList(MediaServerItem mediaServerItem, String app, String stream, String schema, RequestCallback callback){
         Map<String, Object> param = new HashMap<>();
         if (app != null) {
@@ -324,6 +354,15 @@ public class ZLMRESTfulUtils {
         sendPost(mediaServerItem, "kick_sessions",param, null);
     }
 
+    /**
+     * 获取截图
+     * @param mediaServerItem
+     * @param flvUrl
+     * @param timeout_sec
+     * @param expire_sec
+     * @param targetPath
+     * @param fileName
+     */
     public void getSnap(MediaServerItem mediaServerItem, String flvUrl, int timeout_sec, int expire_sec, String targetPath, String fileName) {
         Map<String, Object> param = new HashMap<>(3);
         param.put("url", flvUrl);

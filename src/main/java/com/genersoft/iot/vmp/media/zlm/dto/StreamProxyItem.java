@@ -4,6 +4,7 @@ import com.genersoft.iot.vmp.gb28181.bean.GbStream;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
+ *
  * @author lin
  */
 @Schema(description = "拉流代理的信息")

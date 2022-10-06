@@ -20,4 +20,5 @@ public enum OriginType {
     public String getType() {
         return type;
     }
+
 }

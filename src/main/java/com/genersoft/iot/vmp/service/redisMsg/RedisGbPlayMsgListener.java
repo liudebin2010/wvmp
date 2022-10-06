@@ -6,8 +6,8 @@ import com.genersoft.iot.vmp.conf.DynamicTask;
 import com.genersoft.iot.vmp.conf.UserSetting;
 import com.genersoft.iot.vmp.gb28181.bean.SendRtpItem;
 import com.genersoft.iot.vmp.media.zlm.ZlmHttpHookSubscribe;
-import com.genersoft.iot.vmp.media.zlm.ZLMMediaListManager;
-import com.genersoft.iot.vmp.media.zlm.ZLMRTPServerFactory;
+import com.genersoft.iot.vmp.media.zlm.ZlmMediaListManager;
+import com.genersoft.iot.vmp.media.zlm.ZlmRtpServerFactory;
 import com.genersoft.iot.vmp.media.zlm.dto.HookSubscribeFactory;
 import com.genersoft.iot.vmp.media.zlm.dto.HookSubscribeForStreamChange;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaServerItem;
@@ -68,10 +68,10 @@ public class RedisGbPlayMsgListener implements MessageListener {
 
 
     @Autowired
-    private ZLMMediaListManager zlmMediaListManager;
+    private ZlmMediaListManager zlmMediaListManager;
 
     @Autowired
-    private ZLMRTPServerFactory zlmrtpServerFactory;
+    private ZlmRtpServerFactory zlmrtpServerFactory;
 
     @Autowired
     private IMediaServerService mediaServerService;
@@ -83,7 +83,7 @@ public class RedisGbPlayMsgListener implements MessageListener {
     private DynamicTask dynamicTask;
 
     @Autowired
-    private ZLMMediaListManager mediaListManager;
+    private ZlmMediaListManager mediaListManager;
 
     @Autowired
     private ZlmHttpHookSubscribe subscribe;

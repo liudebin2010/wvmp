@@ -41,4 +41,5 @@ public class HookSubscribeForServerStarted implements IHookSubscribe{
     public void setExpires(Instant expires) {
         this.expires = expires;
     }
+
 }

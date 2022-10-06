@@ -8,6 +8,9 @@ import org.springframework.util.unit.DataUnit;
 
 import java.util.List;
 
+/**
+ *
+ */
 @Schema(description = "推流信息")
 public class StreamPushItem extends GbStream implements Comparable<StreamPushItem>{
 

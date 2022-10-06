@@ -111,4 +111,5 @@ public class StreamAuthorityInfo {
         streamAuthorityInfo.setOriginTypeStr(mediaItem.getOriginTypeStr());
         return streamAuthorityInfo;
     }
+
 }

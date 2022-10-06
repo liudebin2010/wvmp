@@ -3,9 +3,10 @@ package com.genersoft.iot.vmp.media.zlm.event;
 /**
  * zlm在线事件
  */
-public class ZLMOnlineEvent extends ZLMEventAbstract {
+public class ZlmOnlineEvent extends ZlmEventAbstract {
 
-	public ZLMOnlineEvent(Object source) {
+	public ZlmOnlineEvent(Object source) {
 		super(source);
 	}
+
 }

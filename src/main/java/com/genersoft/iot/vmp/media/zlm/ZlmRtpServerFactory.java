@@ -10,17 +10,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
 
+/**
+ *
+ */
 @Component
-public class ZLMRTPServerFactory {
+public class ZlmRtpServerFactory {
 
-    private Logger logger = LoggerFactory.getLogger("ZLMRTPServerFactory");
+    private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
-    private ZLMRESTfulUtils zlmresTfulUtils;
+    private ZlmRestfulUtils zlmRestfulUtils;
 
     @Autowired
     private UserSetting userSetting;
@@ -34,7 +36,7 @@ public class ZLMRTPServerFactory {
         if (usedFreelist == null) {
             usedFreelist = new ArrayList<>();
         }
-        JSONObject listRtpServerJsonResult = zlmresTfulUtils.listRtpServer(mediaServerItem);
+        JSONObject listRtpServerJsonResult = zlmRestfulUtils.listRtpServer(mediaServerItem);
         if (listRtpServerJsonResult != null) {
             JSONArray data = listRtpServerJsonResult.getJSONArray("data");
             if (data != null) {
@@ -68,14 +70,14 @@ public class ZLMRTPServerFactory {
         param.put("enable_tcp", 1);
         param.put("stream_id", stream);
 //        param.put("port", 0);
-        JSONObject openRtpServerResultJson = zlmresTfulUtils.openRtpServer(mediaServerItem, param);
+        JSONObject openRtpServerResultJson = zlmRestfulUtils.openRtpServer(mediaServerItem, param);
 
         if (openRtpServerResultJson != null) {
             if (openRtpServerResultJson.getInteger("code") == 0) {
                 result= openRtpServerResultJson.getInteger("port");
                 Map<String, Object> closeRtpServerParam = new HashMap<>();
                 closeRtpServerParam.put("stream_id", stream);
-                zlmresTfulUtils.closeRtpServer(mediaServerItem, closeRtpServerParam);
+                zlmRestfulUtils.closeRtpServer(mediaServerItem, closeRtpServerParam);
             }else {
                 usedFreelist.add(startPort);
                 startPort +=2;
@@ -91,7 +93,7 @@ public class ZLMRTPServerFactory {
     public int createRTPServer(MediaServerItem mediaServerItem, String streamId, int ssrc, Integer port) {
         int result = -1;
         // 查询此rtp server 是否已经存在
-        JSONObject rtpInfo = zlmresTfulUtils.getRtpInfo(mediaServerItem, streamId);
+        JSONObject rtpInfo = zlmRestfulUtils.getRtpInfo(mediaServerItem, streamId);
         logger.info(JSONObject.toJSONString(rtpInfo));
         if(rtpInfo.getInteger("code") == 0){
             if (rtpInfo.getBoolean("exist")) {
@@ -101,7 +103,7 @@ public class ZLMRTPServerFactory {
                     // 此时重新打开rtpServer
                     Map<String, Object> param = new HashMap<>();
                     param.put("stream_id", streamId);
-                    JSONObject jsonObject = zlmresTfulUtils.closeRtpServer(mediaServerItem, param);
+                    JSONObject jsonObject = zlmRestfulUtils.closeRtpServer(mediaServerItem, param);
                     if (jsonObject != null ) {
                         if (jsonObject.getInteger("code") == 0) {
                             return createRTPServer(mediaServerItem, streamId, ssrc, port);
@@ -127,7 +129,7 @@ public class ZLMRTPServerFactory {
             param.put("port", port);
         }
         param.put("ssrc", ssrc);
-        JSONObject openRtpServerResultJson = zlmresTfulUtils.openRtpServer(mediaServerItem, param);
+        JSONObject openRtpServerResultJson = zlmRestfulUtils.openRtpServer(mediaServerItem, param);
         logger.info(JSONObject.toJSONString(openRtpServerResultJson));
         if (openRtpServerResultJson != null) {
             if (openRtpServerResultJson.getInteger("code") == 0) {
@@ -147,7 +149,7 @@ public class ZLMRTPServerFactory {
         if (serverItem !=null){
             Map<String, Object> param = new HashMap<>();
             param.put("stream_id", streamId);
-            JSONObject jsonObject = zlmresTfulUtils.closeRtpServer(serverItem, param);
+            JSONObject jsonObject = zlmRestfulUtils.closeRtpServer(serverItem, param);
             if (jsonObject != null ) {
                 if (jsonObject.getInteger("code") == 0) {
                     result = jsonObject.getInteger("hit") == 1;
@@ -278,14 +280,14 @@ public class ZLMRTPServerFactory {
      * 调用zlm RESTFUL API —— startSendRtp
      */
     public JSONObject startSendRtpStream(MediaServerItem mediaServerItem, Map<String, Object>param) {
-        return zlmresTfulUtils.startSendRtp(mediaServerItem, param);
+        return zlmRestfulUtils.startSendRtp(mediaServerItem, param);
     }
 
     /**
      * 查询待转推的流是否就绪
      */
     public Boolean isRtpReady(MediaServerItem mediaServerItem, String streamId) {
-        JSONObject mediaInfo = zlmresTfulUtils.getMediaInfo(mediaServerItem,"rtp", "rtsp", streamId);
+        JSONObject mediaInfo = zlmRestfulUtils.getMediaInfo(mediaServerItem,"rtp", "rtsp", streamId);
         return (mediaInfo.getInteger("code") == 0 && mediaInfo.getBoolean("online"));
     }
 
@@ -293,7 +295,7 @@ public class ZLMRTPServerFactory {
      * 查询待转推的流是否就绪
      */
     public Boolean isStreamReady(MediaServerItem mediaServerItem, String app, String streamId) {
-        JSONObject mediaInfo = zlmresTfulUtils.getMediaList(mediaServerItem, app, streamId);
+        JSONObject mediaInfo = zlmRestfulUtils.getMediaList(mediaServerItem, app, streamId);
         return (mediaInfo.getInteger("code") == 0
                 && mediaInfo.getJSONArray("data") != null
                 && mediaInfo.getJSONArray("data").size() > 0);
@@ -305,7 +307,7 @@ public class ZLMRTPServerFactory {
      * @return
      */
     public int totalReaderCount(MediaServerItem mediaServerItem, String app, String streamId) {
-        JSONObject mediaInfo = zlmresTfulUtils.getMediaInfo(mediaServerItem, app, "rtsp", streamId);
+        JSONObject mediaInfo = zlmRestfulUtils.getMediaInfo(mediaServerItem, app, "rtsp", streamId);
         if (mediaInfo == null) {
             return 0;
         }
@@ -326,7 +328,7 @@ public class ZLMRTPServerFactory {
      */
     public Boolean stopSendRtpStream(MediaServerItem mediaServerItem, Map<String, Object>param) {
         Boolean result = false;
-        JSONObject jsonObject = zlmresTfulUtils.stopSendRtp(mediaServerItem, param);
+        JSONObject jsonObject = zlmRestfulUtils.stopSendRtp(mediaServerItem, param);
         if (jsonObject == null) {
             logger.error("[停止RTP推流] 失败: 请检查ZLM服务");
         } else if (jsonObject.getInteger("code") == 0) {

@@ -5,7 +5,7 @@ import com.genersoft.iot.vmp.conf.UserSetting;
 import com.genersoft.iot.vmp.gb28181.bean.*;
 import com.genersoft.iot.vmp.gb28181.event.SipSubscribe;
 import com.genersoft.iot.vmp.gb28181.transmit.cmd.impl.SIPCommanderFroPlatform;
-import com.genersoft.iot.vmp.media.zlm.ZLMRTPServerFactory;
+import com.genersoft.iot.vmp.media.zlm.ZlmRtpServerFactory;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaServerItem;
 import com.genersoft.iot.vmp.service.IMediaServerService;
 import com.genersoft.iot.vmp.service.IPlatformService;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 
 import javax.sip.InvalidArgumentException;
 import javax.sip.SipException;
-import javax.sip.TimeoutEvent;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +54,7 @@ public class PlatformServiceImpl implements IPlatformService {
     private DynamicTask dynamicTask;
 
     @Autowired
-    private ZLMRTPServerFactory zlmrtpServerFactory;
+    private ZlmRtpServerFactory zlmrtpServerFactory;
 
     @Autowired
     private SubscribeHolder subscribeHolder;

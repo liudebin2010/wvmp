@@ -2,7 +2,10 @@ package com.genersoft.iot.vmp.media.zlm;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-public class ZLMServerConfig {
+/**
+ * 媒体服务器的配置,对应ZLM Server的配置文件
+ */
+public class ZlmServerConfig {
 
     @JSONField(name = "api.apiDebug")
     private String apiDebug;

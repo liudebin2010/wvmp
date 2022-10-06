@@ -40,4 +40,5 @@ public class HookSubscribeForStreamChange implements IHookSubscribe{
     public void setExpires(Instant expires) {
         this.expires = expires;
     }
+
 }

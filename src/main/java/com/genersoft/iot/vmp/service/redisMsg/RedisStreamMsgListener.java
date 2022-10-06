@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.genersoft.iot.vmp.conf.UserSetting;
 
-import com.genersoft.iot.vmp.media.zlm.ZLMMediaListManager;
+import com.genersoft.iot.vmp.media.zlm.ZlmMediaListManager;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class RedisStreamMsgListener implements MessageListener {
     private UserSetting userSetting;
 
     @Autowired
-    private ZLMMediaListManager zlmMediaListManager;
+    private ZlmMediaListManager zlmMediaListManager;
 
     private boolean taskQueueHandlerRun = false;
 

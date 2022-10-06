@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -51,7 +50,7 @@ public class ZlmHttpHookSubscribe {
             for (String s : key.getContent().keySet()) {
                 if (result == null) {
                     result = key.getContent().getString(s).equals(hookResponse.getString(s));
-                }else {
+                } else {
                     if (key.getContent().getString(s) == null) {
                         continue;
                     }
@@ -136,7 +135,6 @@ public class ZlmHttpHookSubscribe {
      */
     @Scheduled(cron="0 0/5 * * * ?")   //每5分钟执行一次
     public void execute(){
-
         Instant instant = Instant.now().minusMillis(TimeUnit.MINUTES.toMillis(5));
         int total = 0;
         for (HookType hookType : allSubscribes.keySet()) {

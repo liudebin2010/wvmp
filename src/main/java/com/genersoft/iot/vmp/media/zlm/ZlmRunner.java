@@ -22,14 +22,14 @@ import java.util.*;
 
 @Component
 @Order(value=1)
-public class ZLMRunner implements CommandLineRunner {
+public class ZlmRunner implements CommandLineRunner {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZLMRunner.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZlmRunner.class);
 
     private Map<String, Boolean> startGetMedia;
 
     @Autowired
-    private ZLMRESTfulUtils zlmresTfulUtils;
+    private ZlmRestfulUtils zlmresTfulUtils;
 
     @Autowired
     private ZlmHttpHookSubscribe hookSubscribe;
@@ -46,7 +46,6 @@ public class ZLMRunner implements CommandLineRunner {
     @Autowired
     private DynamicTask dynamicTask;
 
-
     @Override
     public void run(String... strings) throws Exception {
         mediaServerService.clearMediaServerForOnline();
@@ -62,7 +61,7 @@ public class ZLMRunner implements CommandLineRunner {
         // 订阅 zlm启动事件, 新的zlm也会从这里进入系统
         hookSubscribe.addSubscribe(hookSubscribeForServerStarted,
                 (MediaServerItem mediaServerItem, JSONObject response)->{
-            ZLMServerConfig zlmServerConfig = JSONObject.toJavaObject(response, ZLMServerConfig.class);
+            ZlmServerConfig zlmServerConfig = JSONObject.toJavaObject(response, ZlmServerConfig.class);
             if (zlmServerConfig !=null ) {
                 if (startGetMedia != null) {
                     startGetMedia.remove(zlmServerConfig.getGeneralMediaServerId());
@@ -72,8 +71,6 @@ public class ZLMRunner implements CommandLineRunner {
                 }
             }
         });
-
-
 
         // 获取zlm信息
         logger.info("[zlm] 等待默认zlm中...");
@@ -107,7 +104,7 @@ public class ZLMRunner implements CommandLineRunner {
     @Async("taskExecutor")
     public void connectZlmServer(MediaServerItem mediaServerItem){
         String connectZlmServerTaskKey = "connect-zlm-" + mediaServerItem.getId();
-        ZLMServerConfig zlmServerConfigFirst = getMediaServerConfig(mediaServerItem);
+        ZlmServerConfig zlmServerConfigFirst = getMediaServerConfig(mediaServerItem);
         if (zlmServerConfigFirst != null) {
             zlmServerConfigFirst.setIp(mediaServerItem.getIp());
             zlmServerConfigFirst.setHttpPort(mediaServerItem.getHttpPort());
@@ -123,7 +120,7 @@ public class ZLMRunner implements CommandLineRunner {
         }
 
         dynamicTask.startCron(connectZlmServerTaskKey, ()->{
-            ZLMServerConfig zlmServerConfig = getMediaServerConfig(mediaServerItem);
+            ZlmServerConfig zlmServerConfig = getMediaServerConfig(mediaServerItem);
             if (zlmServerConfig != null) {
                 dynamicTask.stop(connectZlmServerTaskKey);
                 zlmServerConfig.setIp(mediaServerItem.getIp());
@@ -137,7 +134,7 @@ public class ZLMRunner implements CommandLineRunner {
         }, 2000);
     }
 
-    public ZLMServerConfig getMediaServerConfig(MediaServerItem mediaServerItem) {
+    public ZlmServerConfig getMediaServerConfig(MediaServerItem mediaServerItem) {
         if (startGetMedia == null) { return null;}
         if (!mediaServerItem.isDefaultServer() && mediaServerService.getOne(mediaServerItem.getId()) == null) {
             return null;
@@ -146,17 +143,16 @@ public class ZLMRunner implements CommandLineRunner {
             return null;
         }
         JSONObject responseJson = zlmresTfulUtils.getMediaServerConfig(mediaServerItem);
-        ZLMServerConfig zlmServerConfig = null;
+        ZlmServerConfig zlmServerConfig = null;
         if (responseJson != null) {
             JSONArray data = responseJson.getJSONArray("data");
             if (data != null && data.size() > 0) {
-                zlmServerConfig = JSON.parseObject(JSON.toJSONString(data.get(0)), ZLMServerConfig.class);
+                zlmServerConfig = JSON.parseObject(JSON.toJSONString(data.get(0)), ZlmServerConfig.class);
             }
         } else {
             logger.error("[ {} ]-[ {}:{} ]主动连接失败, 2s后重试",
                     mediaServerItem.getId(), mediaServerItem.getIp(), mediaServerItem.getHttpPort());
         }
         return zlmServerConfig;
-
     }
 }

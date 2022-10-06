@@ -9,22 +9,17 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 @Component
-public class AssistRESTfulUtils {
+public class AssistRestfulUtils {
 
-    private final static Logger logger = LoggerFactory.getLogger(AssistRESTfulUtils.class);
+    private final static Logger logger = LoggerFactory.getLogger(AssistRestfulUtils.class);
 
     public interface RequestCallback{
         void run(JSONObject response);
@@ -42,7 +37,6 @@ public class AssistRESTfulUtils {
         }
         return httpClientBuilder.build();
     }
-
 
     public JSONObject sendGet(MediaServerItem mediaServerItem, String api, Map<String, Object> param, RequestCallback callback) {
         OkHttpClient client = getClient();
@@ -123,11 +117,8 @@ public class AssistRESTfulUtils {
                 });
             }
 
-
-
         return responseJSON;
     }
-
 
     public JSONObject fileDuration(MediaServerItem mediaServerItem, String app, String stream, RequestCallback callback){
         Map<String, Object> param = new HashMap<>();

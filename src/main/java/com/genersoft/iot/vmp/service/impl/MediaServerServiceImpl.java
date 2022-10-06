@@ -30,9 +30,9 @@ import com.genersoft.iot.vmp.conf.UserSetting;
 import com.genersoft.iot.vmp.gb28181.event.EventPublisher;
 import com.genersoft.iot.vmp.gb28181.session.SsrcConfig;
 import com.genersoft.iot.vmp.gb28181.session.VideoStreamSessionManager;
-import com.genersoft.iot.vmp.media.zlm.ZLMRESTfulUtils;
-import com.genersoft.iot.vmp.media.zlm.ZLMRTPServerFactory;
-import com.genersoft.iot.vmp.media.zlm.ZLMServerConfig;
+import com.genersoft.iot.vmp.media.zlm.ZlmRestfulUtils;
+import com.genersoft.iot.vmp.media.zlm.ZlmRtpServerFactory;
+import com.genersoft.iot.vmp.media.zlm.ZlmServerConfig;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaServerItem;
 import com.genersoft.iot.vmp.service.IMediaServerService;
 import com.genersoft.iot.vmp.service.bean.SSRCInfo;
@@ -67,7 +67,7 @@ public class MediaServerServiceImpl implements IMediaServerService {
     private UserSetting userSetting;
 
     @Autowired
-    private ZLMRESTfulUtils zlmresTfulUtils;
+    private ZlmRestfulUtils zlmresTfulUtils;
 
     @Autowired
     private MediaServerMapper mediaServerMapper;
@@ -82,7 +82,7 @@ public class MediaServerServiceImpl implements IMediaServerService {
     private VideoStreamSessionManager streamSession;
 
     @Autowired
-    private ZLMRTPServerFactory zlmrtpServerFactory;
+    private ZlmRtpServerFactory zlmrtpServerFactory;
 
     @Autowired
     private EventPublisher publisher;
@@ -305,7 +305,7 @@ public class MediaServerServiceImpl implements IMediaServerService {
         if (responseJSON != null) {
             JSONArray data = responseJSON.getJSONArray("data");
             if (data != null && data.size() > 0) {
-                ZLMServerConfig zlmServerConfig= JSON.parseObject(JSON.toJSONString(data.get(0)), ZLMServerConfig.class);
+                ZlmServerConfig zlmServerConfig= JSON.parseObject(JSON.toJSONString(data.get(0)), ZlmServerConfig.class);
                 if (mediaServerMapper.queryOne(zlmServerConfig.getGeneralMediaServerId()) != null) {
                     throw new ControllerException(ErrorCode.ERROR100.getCode(),"保存失败，媒体服务ID [ " + zlmServerConfig.getGeneralMediaServerId() + " ] 已存在，请修改媒体服务器配置");
                 }
@@ -352,7 +352,7 @@ public class MediaServerServiceImpl implements IMediaServerService {
      * @param zlmServerConfig zlm上线携带的参数
      */
     @Override
-    public void zlmServerOnline(ZLMServerConfig zlmServerConfig) {
+    public void zlmServerOnline(ZlmServerConfig zlmServerConfig) {
 
         MediaServerItem serverItem = mediaServerMapper.queryOne(zlmServerConfig.getGeneralMediaServerId());
         if (serverItem == null) {
@@ -591,7 +591,7 @@ public class MediaServerServiceImpl implements IMediaServerService {
             throw new ControllerException(ErrorCode.ERROR100.getCode(), "连接失败");
         }
         JSONArray data = responseJSON.getJSONArray("data");
-        ZLMServerConfig zlmServerConfig = JSON.parseObject(JSON.toJSONString(data.get(0)), ZLMServerConfig.class);
+        ZlmServerConfig zlmServerConfig = JSON.parseObject(JSON.toJSONString(data.get(0)), ZlmServerConfig.class);
         if (zlmServerConfig == null) {
             throw new ControllerException(ErrorCode.ERROR100.getCode(), "读取配置失败");
         }

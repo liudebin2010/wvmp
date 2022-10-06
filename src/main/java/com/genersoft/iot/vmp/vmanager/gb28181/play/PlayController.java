@@ -9,7 +9,7 @@ import com.genersoft.iot.vmp.gb28181.session.VideoStreamSessionManager;
 import com.genersoft.iot.vmp.gb28181.bean.Device;
 import com.genersoft.iot.vmp.gb28181.transmit.callback.DeferredResultHolder;
 import com.genersoft.iot.vmp.gb28181.transmit.callback.RequestMessage;
-import com.genersoft.iot.vmp.media.zlm.ZLMRESTfulUtils;
+import com.genersoft.iot.vmp.media.zlm.ZlmRestfulUtils;
 import com.genersoft.iot.vmp.media.zlm.dto.MediaServerItem;
 import com.genersoft.iot.vmp.service.IMediaServerService;
 import com.genersoft.iot.vmp.storager.IRedisCatchStorage;
@@ -64,7 +64,7 @@ public class PlayController {
 	private IRedisCatchStorage redisCatchStorage;
 
 	@Autowired
-	private ZLMRESTfulUtils zlmresTfulUtils;
+	private ZlmRestfulUtils zlmresTfulUtils;
 
 	@Autowired
 	private DeferredResultHolder resultHolder;

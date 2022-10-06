@@ -3,7 +3,7 @@ package com.genersoft.iot.vmp.media.zlm.dto;
 /**
  * 记录zlm运行中一些参数
  */
-public class ZLMRunInfo {
+public class ZlmRunInfo {
 
     /**
      * zlm当前流数量
@@ -30,4 +30,5 @@ public class ZLMRunInfo {
     public void setOnline(boolean online) {
         this.online = online;
     }
+
 }
