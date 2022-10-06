@@ -19,7 +19,7 @@ import java.util.*;
 @Component
 public class ZlmRtpServerFactory {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
     private ZlmRestfulUtils zlmRestfulUtils;
