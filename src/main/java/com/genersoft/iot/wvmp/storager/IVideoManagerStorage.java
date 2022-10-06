@@ -4,7 +4,7 @@ import com.genersoft.iot.wvmp.gb28181.bean.*;
 import com.genersoft.iot.wvmp.zlm.dto.StreamProxyItem;
 import com.genersoft.iot.wvmp.service.bean.GPSMsgInfo;
 import com.genersoft.iot.wvmp.storager.dao.dto.ChannelSourceInfo;
-import com.genersoft.iot.wvmp.vmanager.gb28181.platform.bean.ChannelReduce;
+import com.genersoft.iot.wvmp.gb28181.protocol.platform.bean.ChannelReduce;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

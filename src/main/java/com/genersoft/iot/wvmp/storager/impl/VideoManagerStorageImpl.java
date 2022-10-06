@@ -13,7 +13,7 @@ import com.genersoft.iot.wvmp.storager.IVideoManagerStorage;
 import com.genersoft.iot.wvmp.storager.dao.*;
 import com.genersoft.iot.wvmp.storager.dao.dto.ChannelSourceInfo;
 import com.genersoft.iot.wvmp.utils.DateUtil;
-import com.genersoft.iot.wvmp.vmanager.gb28181.platform.bean.ChannelReduce;
+import com.genersoft.iot.wvmp.gb28181.protocol.platform.bean.ChannelReduce;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;

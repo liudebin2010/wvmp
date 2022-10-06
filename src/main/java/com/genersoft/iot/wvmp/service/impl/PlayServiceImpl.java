@@ -52,7 +52,7 @@ import com.genersoft.iot.wvmp.service.bean.PlayBackResult;
 import com.genersoft.iot.wvmp.service.bean.SsrcInfo;
 import com.genersoft.iot.wvmp.storager.IRedisCatchStorage;
 import com.genersoft.iot.wvmp.storager.IVideoManagerStorage;
-import com.genersoft.iot.wvmp.vmanager.gb28181.play.bean.PlayResult;
+import com.genersoft.iot.wvmp.gb28181.protocol.play.bean.PlayResult;
 
 @SuppressWarnings(value = {"rawtypes", "unchecked"})
 @Service

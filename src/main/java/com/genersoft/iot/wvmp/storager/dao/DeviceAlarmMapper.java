@@ -1,8 +1,6 @@
 package com.genersoft.iot.wvmp.storager.dao;
 
 import com.genersoft.iot.wvmp.gb28181.bean.DeviceAlarm;
-import com.genersoft.iot.wvmp.gb28181.bean.DeviceChannel;
-import com.genersoft.iot.wvmp.vmanager.gb28181.platform.bean.ChannelReduce;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

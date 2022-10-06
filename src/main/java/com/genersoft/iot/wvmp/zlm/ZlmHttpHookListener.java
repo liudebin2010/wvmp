@@ -102,13 +102,12 @@ public class ZlmHttpHookListener {
 	private ThreadPoolTaskExecutor taskExecutor;
 
 	/**
-	 * 服务器定时上报时间，上报间隔可配置，默认10s上报一次
+	 * ZLM心跳：服务器定时上报时间，上报间隔可配置，默认10s上报一次
 	 *
 	 */
 	@ResponseBody
 	@PostMapping(value = "/on_server_keepalive", produces = "application/json;charset=UTF-8")
 	public JSONObject onServerKeepalive(@RequestBody JSONObject json){
-
 		logger.info("[ ZLM HOOK ]on_server_keepalive API调用，参数：" + json.toString());
 		String mediaServerId = json.getString("mediaServerId");
 		List<ZlmHttpHookSubscribe.Event> subscribes = this.subscribe.getSubscribes(HookType.on_server_keepalive);
@@ -122,7 +121,6 @@ public class ZlmHttpHookListener {
 		JSONObject ret = new JSONObject();
 		ret.put("code", 0);
 		ret.put("msg", "success");
-
 		return ret;
 	}
 

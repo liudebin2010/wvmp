@@ -32,6 +32,5 @@ public class SystemInfoTimerTask {
         } catch (InterruptedException e) {
             logger.error("[获取系统信息失败] {}", e.getMessage());
         }
-
     }
 }

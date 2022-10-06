@@ -12,7 +12,7 @@ import com.genersoft.iot.wvmp.zlm.dto.MediaServerItem;
 import com.genersoft.iot.wvmp.service.bean.InviteTimeOutCallback;
 import com.genersoft.iot.wvmp.service.bean.PlayBackCallback;
 import com.genersoft.iot.wvmp.service.bean.SsrcInfo;
-import com.genersoft.iot.wvmp.vmanager.gb28181.play.bean.PlayResult;
+import com.genersoft.iot.wvmp.gb28181.protocol.play.bean.PlayResult;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import javax.sip.InvalidArgumentException;

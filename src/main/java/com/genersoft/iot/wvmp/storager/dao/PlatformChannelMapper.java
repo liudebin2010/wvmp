@@ -4,7 +4,7 @@ import com.genersoft.iot.wvmp.gb28181.bean.Device;
 import com.genersoft.iot.wvmp.gb28181.bean.DeviceChannel;
 import com.genersoft.iot.wvmp.gb28181.bean.ParentPlatform;
 import com.genersoft.iot.wvmp.gb28181.bean.PlatformCatalog;
-import com.genersoft.iot.wvmp.vmanager.gb28181.platform.bean.ChannelReduce;
+import com.genersoft.iot.wvmp.gb28181.protocol.platform.bean.ChannelReduce;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

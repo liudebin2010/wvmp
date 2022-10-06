@@ -11,7 +11,7 @@ import com.genersoft.iot.wvmp.storager.dao.DeviceChannelMapper;
 import com.genersoft.iot.wvmp.storager.dao.ParentPlatformMapper;
 import com.genersoft.iot.wvmp.storager.dao.PlatformCatalogMapper;
 import com.genersoft.iot.wvmp.storager.dao.PlatformChannelMapper;
-import com.genersoft.iot.wvmp.vmanager.gb28181.platform.bean.ChannelReduce;
+import com.genersoft.iot.wvmp.gb28181.protocol.platform.bean.ChannelReduce;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

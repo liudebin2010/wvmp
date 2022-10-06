@@ -5,41 +5,41 @@ package com.genersoft.iot.wvmp.common;
  */
 public class VideoManagerConstants {
 	
-	public static final String WVP_SERVER_PREFIX = "VMP_SIGNALLING_SERVER_INFO_";
+	public static final String WVP_SERVER_PREFIX = "WVMP_SIGNALLING_SERVER_INFO_";
 
-	public static final String WVP_SERVER_STREAM_PREFIX = "VMP_SIGNALLING_STREAM_";
+	public static final String WVP_SERVER_STREAM_PREFIX = "WVMP_SIGNALLING_STREAM_";
 
-	public static final String MEDIA_SERVER_PREFIX = "VMP_MEDIA_SERVER_";
+	public static final String MEDIA_SERVER_PREFIX = "WVMP_MEDIA_SERVER_";
 
-	public static final String MEDIA_SERVERS_ONLINE_PREFIX = "VMP_MEDIA_ONLINE_SERVERS_";
+	public static final String MEDIA_SERVERS_ONLINE_PREFIX = "WVMP_MEDIA_ONLINE_SERVERS_";
 
-	public static final String MEDIA_STREAM_PREFIX = "VMP_MEDIA_STREAM";
+	public static final String MEDIA_STREAM_PREFIX = "WVMP_MEDIA_STREAM";
 
-	public static final String DEVICE_PREFIX = "VMP_DEVICE_";
+	public static final String DEVICE_PREFIX = "WVMP_DEVICE_";
 
 	// 设备同步完成
-	public static final String DEVICE_SYNC_PREFIX = "VMP_DEVICE_SYNC_";
+	public static final String DEVICE_SYNC_PREFIX = "WVMP_DEVICE_SYNC_";
 
-	public static final String CACHEKEY_PREFIX = "VMP_CHANNEL_";
+	public static final String CACHEKEY_PREFIX = "WVMP_CHANNEL_";
 
-	public static final String KEEPLIVEKEY_PREFIX = "VMP_KEEPALIVE_";
+	public static final String KEEPLIVEKEY_PREFIX = "WVMP_KEEPALIVE_";
 
 	// 此处多了一个_，暂不修改
-	public static final String PLAYER_PREFIX = "VMP_PLAYER_";
-	public static final String PLAY_BLACK_PREFIX = "VMP_PLAYBACK_";
-	public static final String PLAY_INFO_PREFIX = "VMP_PLAY_INFO_";
+	public static final String PLAYER_PREFIX = "WVMP_PLAYER_";
+	public static final String PLAY_BLACK_PREFIX = "WVMP_PLAYBACK_";
+	public static final String PLAY_INFO_PREFIX = "WVMP_PLAY_INFO_";
 
-	public static final String DOWNLOAD_PREFIX = "VMP_DOWNLOAD_";
+	public static final String DOWNLOAD_PREFIX = "WVMP_DOWNLOAD_";
 
-	public static final String PLATFORM_KEEPALIVE_PREFIX = "VMP_PLATFORM_KEEPALIVE_";
+	public static final String PLATFORM_KEEPALIVE_PREFIX = "WVMP_PLATFORM_KEEPALIVE_";
 
-	public static final String PLATFORM_CATCH_PREFIX = "VMP_PLATFORM_CATCH_";
+	public static final String PLATFORM_CATCH_PREFIX = "WVMP_PLATFORM_CATCH_";
 
-	public static final String PLATFORM_REGISTER_PREFIX = "VMP_PLATFORM_REGISTER_";
+	public static final String PLATFORM_REGISTER_PREFIX = "WVMP_PLATFORM_REGISTER_";
 
-	public static final String PLATFORM_REGISTER_INFO_PREFIX = "VMP_PLATFORM_REGISTER_INFO_";
+	public static final String PLATFORM_REGISTER_INFO_PREFIX = "WVMP_PLATFORM_REGISTER_INFO_";
 
-	public static final String PLATFORM_SEND_RTP_INFO_PREFIX = "VMP_PLATFORM_SEND_RTP_INFO_";
+	public static final String PLATFORM_SEND_RTP_INFO_PREFIX = "WVMP_PLATFORM_SEND_RTP_INFO_";
 
 	public static final String EVENT_ONLINE_REGISTER = "1";
 
@@ -49,23 +49,23 @@ public class VideoManagerConstants {
 	
 	public static final String EVENT_OUTLINE_TIMEOUT = "2";
 
-	public static final String MEDIA_SSRC_USED_PREFIX = "VMP_MEDIA_USED_SSRC_";
+	public static final String MEDIA_SSRC_USED_PREFIX = "WVMP_MEDIA_USED_SSRC_";
 
-	public static final String MEDIA_TRANSACTION_USED_PREFIX = "VMP_MEDIA_TRANSACTION_";
+	public static final String MEDIA_TRANSACTION_USED_PREFIX = "WVMP_MEDIA_TRANSACTION_";
 
 	public static final String MEDIA_STREAM_AUTHORITY = "MEDIA_STREAM_AUTHORITY_";
 
-	public static final String SIP_CSEQ_PREFIX = "VMP_SIP_CSEQ_";
+	public static final String SIP_CSEQ_PREFIX = "WVMP_SIP_CSEQ_";
 
-	public static final String SIP_SN_PREFIX = "VMP_SIP_SN_";
+	public static final String SIP_SN_PREFIX = "WVMP_SIP_SN_";
 
-	public static final String SIP_SUBSCRIBE_PREFIX = "VMP_SIP_SUBSCRIBE_";
+	public static final String SIP_SUBSCRIBE_PREFIX = "WVMP_SIP_SUBSCRIBE_";
 
-	public static final String SYSTEM_INFO_CPU_PREFIX = "VMP_SYSTEM_INFO_CPU_";
+	public static final String SYSTEM_INFO_CPU_PREFIX = "WVMP_SYSTEM_INFO_CPU_";
 
-	public static final String SYSTEM_INFO_MEM_PREFIX = "VMP_SYSTEM_INFO_MEM_";
+	public static final String SYSTEM_INFO_MEM_PREFIX = "WVMP_SYSTEM_INFO_MEM_";
 
-	public static final String SYSTEM_INFO_NET_PREFIX = "VMP_SYSTEM_INFO_NET_";
+	public static final String SYSTEM_INFO_NET_PREFIX = "WVMP_SYSTEM_INFO_NET_";
 
 
 
