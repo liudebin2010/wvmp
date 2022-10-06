@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.genersoft</groupId>
-	<artifactId>wvp-pro</artifactId>
+	<artifactId>wvmp-pro</artifactId>
 	<version>2.3.2</version>
-	<name>web video platform</name>
+	<name>web video manager platform</name>
 	<description>国标28181视频平台</description>
 
 	<repositories>

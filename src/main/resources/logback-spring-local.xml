@@ -109,7 +109,7 @@
 	</logger>
 
 	<!--记录druid-sql的记录-->
-	<logger name="com.genersoft.iot.vmp.storager.dao" level="info" additivity="true">
+	<logger name="com.genersoft.iot.wvmp.storager.dao" level="info" additivity="true">
 		<!--AppenderRef ref="Console"/-->
 		<appender-ref ref="RollingFileError"/>
 		<appender-ref ref="druidSqlRollingFile"/>
