@@ -34,7 +34,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.sip.InvalidArgumentException;
 import javax.sip.SipException;

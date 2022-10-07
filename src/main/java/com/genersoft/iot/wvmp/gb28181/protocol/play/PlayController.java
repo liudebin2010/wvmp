@@ -82,8 +82,7 @@ public class PlayController {
 	@Parameter(name = "deviceId", description = "设备国标编号", required = true)
 	@Parameter(name = "channelId", description = "通道国标编号", required = true)
 	@GetMapping("/start/{deviceId}/{channelId}")
-	public DeferredResult<WvmpResult<String>> play(@PathVariable String deviceId,
-													   @PathVariable String channelId) {
+	public DeferredResult<WvmpResult<String>> play(@PathVariable String deviceId, @PathVariable String channelId) {
 
 		// 获取可用的zlm
 		Device device = storager.queryVideoDevice(deviceId);
@@ -92,7 +91,6 @@ public class PlayController {
 
 		return playResult.getResult();
 	}
-
 
 	@Operation(summary = "停止点播")
 	@Parameter(name = "deviceId", description = "设备国标编号", required = true)
